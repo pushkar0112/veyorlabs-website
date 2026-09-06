@@ -26,10 +26,10 @@ export interface SocialLink {
 export const siteConfig = {
   name: 'VeyoraLabs',
   tagline: 'Building the Future of Education.',
-  contactEmail: 'hello@veyorlabs.com',
+  contactEmail: 'support@veyoralabs.net',
   domain: 'https://veyoralabs.net',
   statusBadge: 'Early-Stage Exploration',
-  
+
   navItems: [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
