@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://veyorlabs.com/sitemap.xml
+Sitemap: https://veyoralabs.net/sitemap.xml

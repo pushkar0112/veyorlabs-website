@@ -82,7 +82,7 @@ export const Contact: React.FC = () => {
               aria-label={`Send email to ${siteConfig.contactEmail}`}
             >
               <Mail className="w-4 h-4 text-brand-cyan group-hover:scale-110 transition-transform" />
-              <span className="font-mono text-sm tracking-wide text-brand-cyan group-hover:text-white">
+              <span className="font-mono text-sm tracking-wide text-brand-cyan group-hover:text-white break-all sm:break-normal">
                 {siteConfig.contactEmail}
               </span>
             </a>

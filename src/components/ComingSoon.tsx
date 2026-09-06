@@ -21,7 +21,7 @@ export const ComingSoon: React.FC = () => {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Futuristic Card Container */}
-        <div className="relative rounded-3xl p-10 sm:p-16 bg-gradient-to-b from-brand-surface/90 to-brand-card/90 border border-brand-border hover:border-brand-cyan/40 transition-colors duration-500 shadow-2xl shadow-black/60">
+        <div className="relative rounded-3xl p-6 sm:p-10 md:p-16 bg-gradient-to-b from-brand-surface/90 to-brand-card/90 border border-brand-border hover:border-brand-cyan/40 transition-colors duration-500 shadow-2xl shadow-black/60">
           {/* Subtle Top Glowing Line */}
           <div className="absolute top-0 left-1/4 right-1/4 h-[2px] bg-gradient-to-r from-transparent via-brand-cyan to-transparent" />
 

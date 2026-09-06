@@ -27,7 +27,7 @@ export const siteConfig = {
   name: 'VeyoraLabs',
   tagline: 'Building the Future of Education.',
   contactEmail: 'hello@veyorlabs.com',
-  domain: 'https://veyorlabs.com',
+  domain: 'https://veyoralabs.net',
   statusBadge: 'Early-Stage Exploration',
   
   navItems: [

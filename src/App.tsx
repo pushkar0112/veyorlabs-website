@@ -7,8 +7,18 @@ import { About } from './components/About';
 import { ComingSoon } from './components/ComingSoon';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { NotFound } from './components/NotFound';
 
 export const App: React.FC = () => {
+  const isNotFound =
+    typeof window !== 'undefined' &&
+    window.location.pathname !== '/' &&
+    window.location.pathname !== '' &&
+    window.location.pathname !== '/index.html';
+
+  if (isNotFound) {
+    return <NotFound />;
+  }
   return (
     <div className="min-h-screen bg-brand-dark text-slate-100 flex flex-col font-sans selection:bg-brand-cyan/20 selection:text-brand-cyan">
       {/* Skip to Main Content Link for Accessibility */}

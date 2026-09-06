@@ -43,7 +43,7 @@ veyoralabs/
 │   ├── favicon.svg         # Geometric modern vector logo mark
 │   ├── robots.txt          # Web crawler index rules & sitemap reference
 │   ├── site.webmanifest    # Clean PWA manifest (zero permissions requested)
-│   └── sitemap.xml         # Canonical XML sitemap for https://veyorlabs.com
+│   └── sitemap.xml         # Canonical XML sitemap for https://veyoralabs.net
 ├── src/
 │   ├── components/
 │   │   ├── About.tsx       # About VeyoraLabs (authentic startup posture)
@@ -141,10 +141,10 @@ The static build in `dist/` can be deployed instantly to any edge static host.
 
 ## 7. GoDaddy DNS Configuration Instructions
 
-To connect your custom domain (e.g., `veyorlabs.com`) purchased from GoDaddy to your static host while keeping domain registration at GoDaddy:
+To connect your custom domain (e.g., `veyoralabs.net`) purchased from GoDaddy to your static host while keeping domain registration at GoDaddy:
 
 ### Step 1: Add Custom Domain to Your Hosting Provider
-- In **Vercel**: Go to Project Settings > **Domains** > Enter `veyorlabs.com` and `www.veyorlabs.com`.
+- In **Vercel**: Go to Project Settings > **Domains** > Enter `veyoralabs.net` and `www.veyoralabs.net`.
 - In **Netlify**: Go to Site Configuration > **Domain Management** > **Add a domain**.
 - In **Cloudflare Pages**: Go to Custom Domains > **Set up a custom domain**.
 
@@ -152,15 +152,15 @@ Your provider will present DNS values (typically an `A` record IP address and a 
 
 ### Step 2: Configure DNS in GoDaddy
 1. Log in to [GoDaddy Domain Portfolio](https://dcc.godaddy.com/control/portfolio).
-2. Click on `veyorlabs.com`, then click **DNS** (or **Manage DNS**).
+2. Click on `veyoralabs.net`, then click **DNS** (or **Manage DNS**).
 3. Under the **DNS Records** tab, add or edit the following records:
 
-#### Apex / Root Domain (`veyorlabs.com`):
+#### Apex / Root Domain (`veyoralabs.net`):
 | Type | Name | Value | TTL |
 | :--- | :--- | :--- | :--- |
 | **A** | `@` | `76.76.21.21` *(if using Vercel; or provider IP)* | `1/2 Hour` or `Default` |
 
-#### Subdomain (`www.veyorlabs.com`):
+#### Subdomain (`www.veyoralabs.net`):
 | Type | Name | Value | TTL |
 | :--- | :--- | :--- | :--- |
 | **CNAME** | `www` | `cname.vercel-dns.com` *(if using Vercel; or provider alias)* | `1/2 Hour` or `Default` |
@@ -171,7 +171,7 @@ Your provider will present DNS values (typically an `A` record IP address and a 
 ### Step 3: SSL / HTTPS Verification
 1. Allow 5 to 30 minutes for DNS propagation across global resolvers.
 2. The hosting provider will automatically issue a free, auto-renewing **Let's Encrypt / DigiCert SSL certificate**.
-3. Verify that HTTP automatically redirects to HTTPS by visiting `http://veyorlabs.com`.
+3. Verify that HTTP automatically redirects to HTTPS by visiting `https://veyoralabs.net`.
 
 ---
 
