@@ -4,68 +4,34 @@ import { siteConfig } from '../config/site';
 import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const goTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 96, behavior: 'smooth' });
     }
   };
 
   return (
-    <footer className="py-16 bg-brand-dark border-t border-brand-border text-slate-400">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-brand-border">
-          {/* Brand & Tagline */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <Logo showText={true} />
-            <p className="mt-3 text-sm text-slate-400 font-medium">
-              {siteConfig.tagline}
-            </p>
-            <p className="mt-1 text-xs text-brand-cyan/90 font-mono">
-              {siteConfig.footer.notice}
-            </p>
+    <footer className="footer-enter border-t border-brand-border bg-brand-surface py-9 text-neutral-600 sm:py-10">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="grid items-center gap-7 md:grid-cols-[1.1fr_1.5fr_1fr] md:gap-10">
+          <div>
+            <Logo />
+            <p className="mt-3 max-w-xs text-sm leading-6 text-neutral-500">{siteConfig.tagline}</p>
           </div>
-
-          {/* Navigation Links */}
-          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm" aria-label="Footer Navigation">
-            {siteConfig.navItems.map((item, index) => (
-              <React.Fragment key={item.label}>
-                <a
-                  href={item.href}
-                  onClick={(e) => handleScrollTo(e, item.href)}
-                  className="hover:text-white transition-colors duration-200"
-                >
-                  {item.label}
-                </a>
-                {index < siteConfig.navItems.length - 1 && (
-                  <span className="text-slate-500 select-none" aria-hidden="true">
-                    |
-                  </span>
-                )}
-              </React.Fragment>
+          <nav className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm" aria-label="Footer Navigation">
+            {siteConfig.navItems.map((item) => (
+              <a key={item.label} href={item.href} onClick={(e) => goTo(e, item.href)} className="transition-colors hover:text-brand-cyan">{item.label}</a>
             ))}
           </nav>
-
-          {/* Direct Email Link */}
-          <div className="flex items-center">
-            <a
-              href={`mailto:${siteConfig.contactEmail}`}
-              className="inline-flex items-center gap-2 text-sm text-slate-300 hover:text-brand-cyan transition-colors"
-              aria-label={`Send email to ${siteConfig.contactEmail}`}
-            >
-              <Mail className="w-4 h-4 text-brand-teal" />
-              <span className="font-mono">{siteConfig.contactEmail}</span>
-            </a>
-          </div>
+          <a href={`mailto:${siteConfig.contactEmail}`} className="inline-flex h-fit items-center gap-2 text-sm transition-colors hover:text-brand-cyan" aria-label={`Send email to ${siteConfig.contactEmail}`}>
+            <Mail className="h-4 w-4 text-brand-cyan" />{siteConfig.contactEmail}
+          </a>
         </div>
-
-        {/* Copyright & Disclaimer Notice */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <div>{siteConfig.footer.copyright}</div>
-          <div className="text-slate-400">
-            Static Informational Website • Zero Cookies • Privacy-First
-          </div>
+        <div className="mt-8 flex flex-col gap-2 border-t border-brand-border pt-5 text-xs text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
+          <span>{siteConfig.footer.copyright}</span>
+          <span>Static informational website · Privacy-first</span>
         </div>
       </div>
     </footer>

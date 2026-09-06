@@ -8,6 +8,7 @@ import { ComingSoon } from './components/ComingSoon';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { NotFound } from './components/NotFound';
+import { ScrollProgress } from './components/ScrollProgress';
 
 export const App: React.FC = () => {
   const isNotFound =
@@ -20,7 +21,7 @@ export const App: React.FC = () => {
     return <NotFound />;
   }
   return (
-    <div className="min-h-screen bg-brand-dark text-slate-100 flex flex-col font-sans selection:bg-brand-cyan/20 selection:text-brand-cyan">
+    <div className="min-h-screen bg-brand-dark text-neutral-900 flex flex-col font-sans selection:bg-brand-cyan/20 selection:text-brand-cyan">
       {/* Skip to Main Content Link for Accessibility */}
       <a
         href="#main-content"
@@ -31,6 +32,7 @@ export const App: React.FC = () => {
 
       {/* Navigation Bar */}
       <Navbar />
+      <ScrollProgress />
 
       {/* Main Content Area */}
       <main id="main-content" className="flex-grow">

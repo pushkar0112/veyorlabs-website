@@ -40,16 +40,16 @@ export const siteConfig = {
 
   hero: {
     badge: 'Education × Technology',
-    heading: 'Building the Future of Education.',
-    supportingText: 'VeyoraLabs is exploring technology-driven solutions for education, learning, and the next generation of learners.',
-    additionalText: "We're currently building behind the scenes. More information about VeyoraLabs and our upcoming initiatives will be available soon.",
+    heading: 'Building better ways to learn, grow, and prepare for tomorrow.',
+    supportingText: 'VeyoraLabs is exploring technology-driven ideas that can make learning more engaging, accessible, and meaningful for the next generation.',
+    additionalText: '',
     primaryCta: 'Explore VeyoraLabs',
     secondaryCta: "What's Coming",
   },
 
   educationFocus: {
-    heading: 'Technology. Education. Possibility.',
-    subheading: 'Exploring how thoughtful product design and emerging technology can elevate learning ecosystems.',
+    heading: "Where We're Exploring",
+    subheading: 'We are exploring the intersection of education, technology, and human potential.',
     areas: [
       {
         title: 'Learning Experiences',
@@ -119,17 +119,17 @@ export const siteConfig = {
   },
 
   comingSoon: {
-    heading: 'Something New Is Coming.',
-    badge: 'Under Development',
-    description: "We're working on what comes next. Stay tuned as VeyoraLabs prepares to introduce its education-focused initiatives.",
-    ctaText: 'More Information Coming Soon',
+    heading: "We're researching, designing, and building the ideas that will shape VeyoraLabs.",
+    badge: "What's Next",
+    description: 'More about our upcoming initiatives will be shared soon.',
+    ctaText: "Discover What's Next",
   },
 
   contact: {
-    heading: 'Connect With VeyoraLabs',
-    badge: 'Direct Communication',
-    subheading: 'For general inquiries, reach out to us directly.',
-    description: 'We welcome inquiries from educators, technologists, and fellow builders who share our passion for educational progress.',
+    heading: "Let's Build What's Next.",
+    badge: 'Get in touch',
+    subheading: '',
+    description: "We're open to conversations with students, educators, technologists, and people who believe technology can make education better.",
   },
 
   // Per strict requirement: Only render social icons if actual valid URLs are configured.

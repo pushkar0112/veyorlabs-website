@@ -1,76 +1,17 @@
 import React from 'react';
-import {
-  Sparkles,
-  Users,
-  Sliders,
-  Cpu,
-  GraduationCap,
-  TrendingUp,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { siteConfig, type FocusArea } from '../config/site';
+import { Reveal } from './Reveal';
 
-const focusIconMap = {
-  Sparkles: Sparkles,
-  Users: Users,
-  Sliders: Sliders,
-  Cpu: Cpu,
-  GraduationCap: GraduationCap,
-  TrendingUp: TrendingUp,
-};
-
-export const EducationFocus: React.FC = () => {
-  return (
-    <section id="education" className="py-24 relative bg-brand-surface/40 border-y border-brand-border">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-dark border border-brand-border text-xs font-medium text-brand-teal mb-4">
-            <span>Core Focus</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-5">
-            {siteConfig.educationFocus.heading}
-          </h2>
-          <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-            {siteConfig.educationFocus.subheading}
-          </p>
-        </div>
-
-        {/* Focus Areas Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {siteConfig.educationFocus.areas.map((area: FocusArea, index: number) => {
-            const Icon = focusIconMap[area.iconName];
-            return (
-              <div
-                key={area.title}
-                className="group p-6 rounded-2xl bg-brand-card/50 border border-brand-border hover:border-brand-cyan/30 hover:bg-brand-card transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-brand-surface flex items-center justify-center text-brand-cyan border border-brand-border group-hover:text-brand-teal group-hover:border-brand-teal/30 transition-colors">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <span className="text-xs font-mono text-slate-400">
-                      0{index + 1}
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-brand-cyan transition-colors">
-                    {area.title}
-                  </h3>
-
-                  <p className="text-slate-300 text-sm leading-relaxed">
-                    {area.description}
-                  </p>
-                </div>
-
-                <div className="mt-6 pt-3 border-t border-white/[0.04] text-[11px] text-slate-400 tracking-wider uppercase font-medium">
-                  Exploratory Track
-                </div>
-              </div>
-            );
-          })}
+export const EducationFocus: React.FC = () => (
+  <section id="education" className="border-b border-brand-border py-24 sm:py-32">
+    <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr]">
+        <Reveal><div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-cyan">Where we're exploring</p><h2 className="mt-5 max-w-md text-4xl font-semibold leading-tight tracking-[-0.03em] text-neutral-900 sm:text-5xl">Education, technology, and human potential.</h2><p className="mt-6 max-w-sm text-base leading-7 text-neutral-600">{siteConfig.educationFocus.subheading}</p></div></Reveal>
+        <div className="grid border-t border-brand-border sm:grid-cols-2">
+          {siteConfig.educationFocus.areas.map((area: FocusArea, index) => <Reveal key={area.title} delay={index * 70}><article className="group border-b border-brand-border py-6 sm:pr-8"><div className="flex gap-5"><span className="font-mono text-2xl text-brand-cyan/70 transition-transform group-hover:translate-x-1">0{index + 1}</span><div><div className="flex items-center justify-between gap-3"><h3 className="text-lg font-semibold text-neutral-900 transition-transform group-hover:translate-x-1 group-hover:text-brand-cyan">{area.title}</h3><ArrowRight className="h-4 w-4 shrink-0 text-brand-cyan opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" /></div><p className="mt-2 text-sm leading-6 text-neutral-600 transition-colors group-hover:text-neutral-800">{area.description}</p></div></div></article></Reveal>)}
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
