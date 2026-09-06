@@ -131,7 +131,7 @@ export const Contact: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-3 rounded-xl bg-brand-surface border border-brand-border text-slate-400 hover:text-brand-cyan hover:border-brand-cyan/40 hover:bg-brand-cyan/10 transition-all duration-200"
-                    aria-label={`Visit VeyorLabs on ${social.name}`}
+                    aria-label={`Visit VeyoraLabs on ${social.name}`}
                   >
                     <SocialIcon className="w-5 h-5" />
                   </a>

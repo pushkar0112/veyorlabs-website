@@ -39,7 +39,7 @@ export const Navbar: React.FC = () => {
             href="#home"
             onClick={(e) => handleLinkClick(e, '#home')}
             className="flex items-center rounded-lg transition-transform hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-brand-cyan"
-            aria-label="VeyorLabs Home"
+            aria-label="VeyoraLabs Home"
           >
             <Logo />
           </a>

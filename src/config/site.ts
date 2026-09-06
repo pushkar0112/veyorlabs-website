@@ -24,7 +24,7 @@ export interface SocialLink {
 }
 
 export const siteConfig = {
-  name: 'VeyorLabs',
+  name: 'VeyoraLabs',
   tagline: 'Building the Future of Education.',
   contactEmail: 'hello@veyorlabs.com',
   domain: 'https://veyorlabs.com',
@@ -41,9 +41,9 @@ export const siteConfig = {
   hero: {
     badge: 'Education × Technology',
     heading: 'Building the Future of Education.',
-    supportingText: 'VeyorLabs is exploring technology-driven solutions for education, learning, and the next generation of learners.',
-    additionalText: "We're currently building behind the scenes. More information about VeyorLabs and our upcoming initiatives will be available soon.",
-    primaryCta: 'Explore VeyorLabs',
+    supportingText: 'VeyoraLabs is exploring technology-driven solutions for education, learning, and the next generation of learners.',
+    additionalText: "We're currently building behind the scenes. More information about VeyoraLabs and our upcoming initiatives will be available soon.",
+    primaryCta: 'Explore VeyoraLabs',
     secondaryCta: "What's Coming",
   },
 
@@ -109,10 +109,10 @@ export const siteConfig = {
   ] as ExploringCard[],
 
   about: {
-    heading: 'About VeyorLabs',
+    heading: 'About VeyoraLabs',
     badge: 'Our Mission',
     paragraphs: [
-      'VeyorLabs is an early-stage technology startup focused on exploring innovative solutions for education.',
+      'VeyoraLabs is an early-stage technology startup focused on exploring innovative solutions for education.',
       'Our goal is to use technology and thoughtful product design to explore new possibilities in the way people learn, develop skills, and prepare for the future.',
       "We're currently working on our ideas and initiatives. More information will be announced soon.",
     ],
@@ -121,12 +121,12 @@ export const siteConfig = {
   comingSoon: {
     heading: 'Something New Is Coming.',
     badge: 'Under Development',
-    description: "We're working on what comes next. Stay tuned as VeyorLabs prepares to introduce its education-focused initiatives.",
+    description: "We're working on what comes next. Stay tuned as VeyoraLabs prepares to introduce its education-focused initiatives.",
     ctaText: 'More Information Coming Soon',
   },
 
   contact: {
-    heading: 'Connect With VeyorLabs',
+    heading: 'Connect With VeyoraLabs',
     badge: 'Direct Communication',
     subheading: 'For general inquiries, reach out to us directly.',
     description: 'We welcome inquiries from educators, technologists, and fellow builders who share our passion for educational progress.',
@@ -141,7 +141,7 @@ export const siteConfig = {
   ] as SocialLink[],
 
   footer: {
-    copyright: '© 2026 VeyorLabs. All rights reserved.',
+    copyright: '© 2026 VeyoraLabs. All rights reserved.',
     tagline: 'Building the Future of Education.',
     notice: 'More information coming soon.',
   },

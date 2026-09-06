@@ -1,13 +1,13 @@
-# VeyorLabs — Secure Static Startup Landing Page
+# VeyoraLabs — Secure Static Startup Landing Page
 
-> **Production-ready, ultra-fast, and secure static landing page for VeyorLabs.**  
-> VeyorLabs is an early-stage technology startup exploring innovative solutions for education, learning, and the next generation of learners.
+> **Production-ready, ultra-fast, and secure static landing page for VeyoraLabs.**  
+> VeyoraLabs is an early-stage technology startup exploring innovative solutions for education, learning, and the next generation of learners.
 
 ---
 
 ## 1. Architectural Overview
 
-VeyorLabs is built as a **hardened, pure static website** — strictly not a web application:
+VeyoraLabs is built as a **hardened, pure static website** — strictly not a web application:
 - **Zero User Accounts**: No login, sign-up, session tracking, database, or authentication mechanisms.
 - **Zero Email Harvesting**: No newsletter forms, notify-me lead forms, or server-side mail processors. Inquiries occur via standard, encrypted mailto links (`mailto:hello@veyorlabs.com`).
 - **Zero Trackers or Cookies**: No Google Analytics, no session replay scripts, no tracking pixels, no telemetry.
@@ -46,7 +46,7 @@ veyoralabs/
 │   └── sitemap.xml         # Canonical XML sitemap for https://veyorlabs.com
 ├── src/
 │   ├── components/
-│   │   ├── About.tsx       # About VeyorLabs (authentic startup posture)
+│   │   ├── About.tsx       # About VeyoraLabs (authentic startup posture)
 │   │   ├── ComingSoon.tsx  # Luminous "Something New Is Coming" feature
 │   │   ├── Contact.tsx     # Direct mailto link, clipboard helper, conditional socials
 │   │   ├── EducationFocus.tsx # 6 core exploratory tracks

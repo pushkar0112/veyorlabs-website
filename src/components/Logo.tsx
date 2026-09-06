@@ -47,7 +47,7 @@ export const Logo: React.FC<LogoProps> = ({ className = 'w-8 h-8', showText = tr
 
       {showText && (
         <span className="font-semibold text-lg tracking-tight text-white flex items-center">
-          Veyor<span className="text-brand-cyan">Labs</span>
+          Veyora<span className="text-brand-cyan">Labs</span>
         </span>
       )}
     </div>
