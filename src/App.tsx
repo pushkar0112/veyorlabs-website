@@ -1,15 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { EducationFocus } from './components/EducationFocus';
-import { WhatWeAreExploring } from './components/WhatWeAreExploring';
+import { Products } from './components/Products';
+import { Solutions } from './components/Solutions';
+import { WhyVeyora } from './components/WhyVeyora';
 import { About } from './components/About';
-import { ComingSoon } from './components/ComingSoon';
+import { Vision } from './components/Vision';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { NotFound } from './components/NotFound';
+import { ProductDetailModal } from './components/ProductDetailModal';
+import { siteConfig, type ProductItem } from './config/site';
 
 export const App: React.FC = () => {
+  const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
+
+  // Check URL hash on initial mount or hash change for deep product linking
+  useEffect(() => {
+    const handleHashCheck = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.startsWith('#product-')) {
+        const productId = hash.replace('#product-', '');
+        const matched = siteConfig.products.find((p) => p.id === productId);
+        if (matched) {
+          setSelectedProduct(matched);
+        }
+      }
+    };
+
+    handleHashCheck();
+    window.addEventListener('hashchange', handleHashCheck);
+    return () => window.removeEventListener('hashchange', handleHashCheck);
+  }, []);
+
   const isNotFound =
     typeof window !== 'undefined' &&
     window.location.pathname !== '/' &&
@@ -19,6 +42,7 @@ export const App: React.FC = () => {
   if (isNotFound) {
     return <NotFound />;
   }
+
   return (
     <div className="min-h-screen bg-brand-dark text-slate-100 flex flex-col font-sans selection:bg-brand-cyan/20 selection:text-brand-cyan">
       {/* Skip to Main Content Link for Accessibility */}
@@ -34,16 +58,36 @@ export const App: React.FC = () => {
 
       {/* Main Content Area */}
       <main id="main-content" className="flex-grow">
+        {/* 1. Hero */}
         <Hero />
-        <EducationFocus />
-        <WhatWeAreExploring />
+
+        {/* 2. Products */}
+        <Products onSelectProduct={(prod) => setSelectedProduct(prod)} />
+
+        {/* 3. Education Ecosystem / Who We Serve */}
+        <Solutions />
+
+        {/* 4. Why Veyora Labs */}
+        <WhyVeyora />
+
+        {/* 5. About Veyora Labs */}
         <About />
-        <ComingSoon />
+
+        {/* 6. Vision & Roadmap */}
+        <Vision />
+
+        {/* 7. Contact */}
         <Contact />
       </main>
 
       {/* Footer */}
       <Footer />
+
+      {/* Product Deep-Dive Modal */}
+      <ProductDetailModal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+      />
     </div>
   );
 };
