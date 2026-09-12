@@ -4,34 +4,34 @@ import { siteConfig } from '../config/site';
 import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const goTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 96, behavior: 'smooth' });
     }
   };
 
   return (
-    <footer className="py-20 bg-brand-dark border-t border-brand-border text-slate-400">
+    <footer className="footer-enter py-20 bg-brand-surface border-t border-brand-border text-neutral-600">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-brand-border">
           {/* Brand & Mission Column */}
           <div className="md:col-span-5 flex flex-col items-start">
             <Logo showText={true} />
-            <p className="mt-4 text-sm text-slate-300 font-medium leading-relaxed max-w-sm">
+            <p className="mt-4 text-sm text-neutral-800 font-medium leading-relaxed max-w-sm">
               {siteConfig.footer.tagline}
             </p>
-            <p className="mt-2 text-xs text-slate-400 leading-relaxed max-w-sm">
+            <p className="mt-2 text-xs text-neutral-500 leading-relaxed max-w-sm">
               {siteConfig.footer.description}
             </p>
             <div className="mt-6">
               <a
                 href={`mailto:${siteConfig.contactEmail}`}
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-brand-surface border border-brand-border text-xs text-slate-300 hover:text-white hover:border-brand-cyan/40 transition-colors"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-brand-border text-xs text-neutral-700 hover:text-brand-cyan hover:border-brand-cyan transition-colors"
                 aria-label={`Send email to ${siteConfig.contactEmail}`}
               >
-                <Mail className="w-3.5 h-3.5 text-brand-teal" />
+                <Mail className="w-3.5 h-3.5 text-brand-cyan" />
                 <span className="font-mono">{siteConfig.contactEmail}</span>
               </a>
             </div>
@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
 
           {/* Navigation Links Column */}
           <div className="md:col-span-3">
-            <div className="text-xs font-mono uppercase tracking-wider text-white font-semibold mb-4">
+            <div className="text-xs font-mono uppercase tracking-wider text-neutral-900 font-semibold mb-4">
               Navigation
             </div>
             <ul className="space-y-2.5 text-sm" aria-label="Footer Navigation">
@@ -47,8 +47,8 @@ export const Footer: React.FC = () => {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    onClick={(e) => handleScrollTo(e, item.href)}
-                    className="hover:text-white hover:text-brand-cyan transition-colors duration-200"
+                    onClick={(e) => goTo(e, item.href)}
+                    className="hover:text-brand-cyan transition-colors duration-200"
                   >
                     {item.label}
                   </a>
@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
 
           {/* Products Column */}
           <div className="md:col-span-4">
-            <div className="text-xs font-mono uppercase tracking-wider text-white font-semibold mb-4">
+            <div className="text-xs font-mono uppercase tracking-wider text-neutral-900 font-semibold mb-4">
               Our Products
             </div>
             <ul className="space-y-3 text-sm">
@@ -67,16 +67,16 @@ export const Footer: React.FC = () => {
                 <li key={product.id}>
                   <a
                     href="#products"
-                    onClick={(e) => handleScrollTo(e, '#products')}
-                    className="group block hover:text-white transition-colors"
+                    onClick={(e) => goTo(e, '#products')}
+                    className="group block hover:text-brand-cyan transition-colors"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-medium text-slate-200 group-hover:text-brand-cyan transition-colors">
+                      <span className="font-medium text-neutral-800 group-hover:text-brand-cyan transition-colors">
                         {product.name}
                       </span>
                       <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity text-brand-cyan" />
                     </div>
-                    <div className="text-xs text-slate-400 mt-0.5">{product.category}</div>
+                    <div className="text-xs text-neutral-500 mt-0.5">{product.category}</div>
                   </a>
                 </li>
               ))}
@@ -85,9 +85,9 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar: Copyright & Platform Details */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
           <div>{siteConfig.footer.copyright}</div>
-          <div className="text-slate-400 text-center sm:text-right font-mono">
+          <div className="text-neutral-500 text-center sm:text-right font-mono">
             {siteConfig.footer.disclaimer}
           </div>
         </div>

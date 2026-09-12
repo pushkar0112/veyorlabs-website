@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Check, Copy, ShieldCheck, MessageSquare } from 'lucide-react';
 import { siteConfig } from '../config/site';
+import { Reveal } from './Reveal';
 
 // Brand SVGs for configured social links (only rendered when non-empty URL is provided)
 const LinkedinIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' }) => (
@@ -46,78 +47,86 @@ export const Contact: React.FC = () => {
   );
 
   return (
-    <section id="contact" className="py-28 relative bg-brand-surface/30 border-t border-brand-border">
+    <section id="contact" className="py-28 relative bg-brand-surface border-t border-brand-border">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs font-semibold text-brand-teal uppercase tracking-wider mb-5">
-          <MessageSquare className="w-3.5 h-3.5 text-brand-teal" />
-          <span>{siteConfig.contact.eyebrow}</span>
-        </div>
+        <Reveal>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-brand-border text-xs font-semibold text-brand-cyan uppercase tracking-wider mb-5 shadow-sm">
+            <MessageSquare className="w-3.5 h-3.5 text-brand-cyan" />
+            <span>{siteConfig.contact.eyebrow}</span>
+          </div>
+        </Reveal>
 
         {/* Heading */}
-        <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
-          {siteConfig.contact.heading}
-        </h2>
+        <Reveal delay={100}>
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-neutral-900 mb-4">
+            {siteConfig.contact.heading}
+          </h2>
+        </Reveal>
 
         {/* Supporting Text */}
-        <p className="text-base sm:text-lg text-slate-300 max-w-xl mx-auto mb-3 font-medium">
-          {siteConfig.contact.subheading}
-        </p>
-        <p className="text-sm text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed font-normal">
-          {siteConfig.contact.description}
-        </p>
+        <Reveal delay={150}>
+          <p className="text-base sm:text-lg text-neutral-700 max-w-xl mx-auto mb-3 font-medium">
+            {siteConfig.contact.subheading}
+          </p>
+          <p className="text-sm text-neutral-500 max-w-xl mx-auto mb-10 leading-relaxed font-normal">
+            {siteConfig.contact.description}
+          </p>
+        </Reveal>
 
         {/* Email Mailto Action Card */}
-        <div className="max-w-lg mx-auto p-6 sm:p-8 rounded-3xl bg-brand-card/90 border border-brand-border shadow-2xl backdrop-blur-xl">
-          <div className="text-xs uppercase tracking-wider font-mono font-semibold text-slate-400 mb-4">
-            {siteConfig.contact.directEmailLabel}
-          </div>
+        <Reveal delay={200}>
+          <div className="contact-email-panel max-w-lg mx-auto p-6 sm:p-8 rounded-3xl bg-white border border-brand-border shadow-lg">
+            <div className="text-xs uppercase tracking-wider font-mono font-semibold text-neutral-500 mb-4">
+              {siteConfig.contact.directEmailLabel}
+            </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            {/* Primary Mailto Link */}
-            <a
-              href={`mailto:${siteConfig.contactEmail}`}
-              className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl font-medium text-white bg-white/5 border border-brand-border hover:border-brand-cyan/40 hover:bg-brand-cyan/10 transition-all duration-200 group focus-visible:ring-2 focus-visible:ring-brand-cyan"
-              aria-label={`Send email to ${siteConfig.contactEmail}`}
-            >
-              <Mail className="w-4 h-4 text-brand-cyan group-hover:scale-110 transition-transform" />
-              <span className="font-mono text-sm tracking-wide text-brand-cyan group-hover:text-white break-all sm:break-normal">
-                {siteConfig.contactEmail}
-              </span>
-            </a>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              {/* Primary Mailto Link */}
+              <a
+                href={`mailto:${siteConfig.contactEmail}`}
+                className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl font-medium text-neutral-900 bg-brand-surface border border-brand-border hover:border-brand-cyan hover:bg-brand-surface/80 transition-all duration-200 group focus-visible:ring-2 focus-visible:ring-brand-cyan"
+                aria-label={`Send email to ${siteConfig.contactEmail}`}
+              >
+                <Mail className="w-4 h-4 text-brand-cyan group-hover:scale-110 transition-transform" />
+                <span className="font-mono text-sm tracking-wide text-brand-cyan font-semibold break-all sm:break-normal">
+                  {siteConfig.contactEmail}
+                </span>
+              </a>
 
-            {/* Quick Copy Action */}
-            <button
-              type="button"
-              onClick={handleCopyEmail}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-4 rounded-2xl text-xs font-semibold text-slate-300 bg-brand-surface border border-brand-border hover:bg-white/10 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-brand-cyan"
-              aria-label="Copy email address to clipboard"
-            >
-              {copied ? (
-                <>
-                  <Check className="w-4 h-4 text-brand-teal" />
-                  <span className="text-brand-teal">Copied</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4 text-slate-400" />
-                  <span>Copy</span>
-                </>
-              )}
-            </button>
-          </div>
+              {/* Quick Copy Action */}
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-4 rounded-2xl text-xs font-semibold text-neutral-700 bg-white border border-brand-border hover:bg-brand-surface hover:text-neutral-900 transition-colors focus-visible:ring-2 focus-visible:ring-brand-cyan"
+                aria-label="Copy email address to clipboard"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4 text-emerald-600" />
+                    <span className="text-emerald-700">Copied</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4 text-neutral-500" />
+                    <span>Copy</span>
+                  </>
+                )}
+              </button>
+            </div>
 
-          {/* Direct Note */}
-          <div className="mt-6 pt-5 border-t border-white/[0.06] flex items-center justify-center gap-2 text-xs text-slate-400">
-            <ShieldCheck className="w-3.5 h-3.5 text-brand-teal" />
-            <span>Direct correspondence with Veyora Labs. No tracking or marketing forms.</span>
+            {/* Direct Note */}
+            <div className="mt-6 pt-5 border-t border-brand-border flex items-center justify-center gap-2 text-xs text-neutral-500">
+              <ShieldCheck className="w-3.5 h-3.5 text-brand-cyan" />
+              <span>Direct correspondence with Veyora Labs. No tracking or marketing forms.</span>
+            </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Social Links (Strictly rendered ONLY if real URLs are configured) */}
         {activeSocialLinks.length > 0 && (
           <div className="mt-12">
-            <div className="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-4">
+            <div className="text-xs uppercase tracking-wider font-semibold text-neutral-500 mb-4">
               Verified Channels
             </div>
             <div className="flex items-center justify-center gap-4">
@@ -129,7 +138,7 @@ export const Contact: React.FC = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-2xl bg-brand-surface border border-brand-border text-slate-400 hover:text-brand-cyan hover:border-brand-cyan/40 hover:bg-brand-cyan/10 transition-all duration-200"
+                    className="p-3 rounded-2xl bg-white border border-brand-border text-neutral-600 hover:text-brand-cyan hover:border-brand-cyan transition-all duration-200"
                     aria-label={`Visit Veyora Labs on ${social.name}`}
                   >
                     <SocialIcon className="w-5 h-5" />

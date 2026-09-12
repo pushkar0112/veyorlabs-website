@@ -1,109 +1,117 @@
 import React from 'react';
 import { Info, Compass, Cpu, Layers, CheckCircle2, Shield } from 'lucide-react';
 import { siteConfig } from '../config/site';
+import { Reveal } from './Reveal';
 
 export const About: React.FC = () => {
   return (
-    <section id="about" className="py-28 relative overflow-hidden bg-brand-surface/30 border-t border-brand-border">
-      {/* Background ambient glow */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-brand-cyan/5 blur-[120px] rounded-full pointer-events-none" />
-
+    <section id="about" className="py-28 relative overflow-hidden bg-brand-surface border-t border-brand-border">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Narrative */}
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs font-semibold text-brand-cyan uppercase tracking-wider mb-6">
-              <Info className="w-3.5 h-3.5" />
-              <span>{siteConfig.about.eyebrow}</span>
-            </div>
+            <Reveal>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-brand-border text-xs font-semibold text-brand-cyan uppercase tracking-wider mb-6 shadow-sm">
+                <Info className="w-3.5 h-3.5" />
+                <span>{siteConfig.about.eyebrow}</span>
+              </div>
+            </Reveal>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-8 leading-tight">
-              {siteConfig.about.heading}
-            </h2>
+            <Reveal delay={100}>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-900 mb-8 leading-tight">
+                {siteConfig.about.heading}
+              </h2>
+            </Reveal>
 
-            <div className="space-y-6 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            <div className="space-y-6 text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
               {siteConfig.about.paragraphs.map((para, idx) => (
-                <p key={idx} className={idx === 0 ? 'text-slate-100 font-medium' : 'text-slate-300'}>
-                  {para}
-                </p>
+                <Reveal key={idx} delay={150 + idx * 80}>
+                  <p className={idx === 0 ? 'text-neutral-900 font-medium' : 'text-neutral-600'}>
+                    {para}
+                  </p>
+                </Reveal>
               ))}
             </div>
 
             {/* Core Values / Pillar Badges */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-brand-border">
-              <div className="flex items-center gap-2.5 text-xs text-slate-300">
-                <Compass className="w-4 h-4 text-brand-cyan shrink-0" />
-                <span className="font-medium">Human-Centric Design</span>
+            <Reveal delay={400}>
+              <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8 border-t border-brand-border">
+                <div className="flex items-center gap-2.5 text-xs text-neutral-700">
+                  <Compass className="w-4 h-4 text-brand-cyan shrink-0" />
+                  <span className="font-medium">Human-Centric Design</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-xs text-neutral-700">
+                  <Cpu className="w-4 h-4 text-brand-teal shrink-0" />
+                  <span className="font-medium">Intelligent Systems</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-xs text-neutral-700">
+                  <Shield className="w-4 h-4 text-brand-cyan shrink-0" />
+                  <span className="font-medium">Institutional Trust</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2.5 text-xs text-slate-300">
-                <Cpu className="w-4 h-4 text-brand-teal shrink-0" />
-                <span className="font-medium">Intelligent Systems</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-xs text-slate-300">
-                <Shield className="w-4 h-4 text-brand-indigo shrink-0" />
-                <span className="font-medium">Institutional Trust</span>
-              </div>
-            </div>
+            </Reveal>
           </div>
 
           {/* Right Column: Architectural Matrix Showcase Card */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-3xl p-8 bg-gradient-to-b from-brand-card/95 to-brand-surface/95 border border-brand-border shadow-2xl backdrop-blur-xl">
-              <div className="flex items-center justify-between pb-6 mb-6 border-b border-white/[0.06]">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/60" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/60" />
-                </div>
-                <span className="text-[11px] font-mono uppercase tracking-wider text-brand-cyan font-semibold">
-                  Product Architecture
-                </span>
-              </div>
-
-              <div className="space-y-4">
-                <div className="p-4 rounded-2xl bg-brand-surface/70 border border-white/[0.06]">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs text-emerald-400 font-mono font-semibold">ZELEON LEARN</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                      Live Tutoring
-                    </span>
+            <Reveal delay={200}>
+              <div className="relative rounded-3xl p-8 bg-white border border-brand-border shadow-xl">
+                <div className="flex items-center justify-between pb-6 mb-6 border-b border-brand-border">
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-400" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                    <div className="w-3 h-3 rounded-full bg-emerald-400" />
                   </div>
-                  <p className="text-sm font-medium text-white">1-on-1 Tuition Platform for Grades 1–10</p>
-                  <p className="text-xs text-slate-400 mt-1">Personalized pacing, individual attention, concept focus.</p>
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-brand-cyan font-semibold">
+                    Product Architecture
+                  </span>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-brand-surface/70 border border-white/[0.06]">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs text-brand-cyan font-mono font-semibold">MYBUDDY LEARN</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20">
-                      AI Platform
-                    </span>
+                <div className="space-y-4">
+                  <div className="p-4 rounded-2xl bg-brand-surface border border-brand-border">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs text-emerald-700 font-mono font-semibold">ZELEON LEARN</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
+                        Live Tutoring
+                      </span>
+                    </div>
+                    <p className="text-sm font-medium text-neutral-900">1-on-1 Tuition Platform for Grades 1–10</p>
+                    <p className="text-xs text-neutral-500 mt-1">Personalized pacing, individual attention, concept focus.</p>
                   </div>
-                  <p className="text-sm font-medium text-white">Intelligent AI-Powered Learning Application</p>
-                  <p className="text-xs text-slate-400 mt-1">Concept clarification, explanations, and adaptive assistance.</p>
+
+                  <div className="p-4 rounded-2xl bg-brand-surface border border-brand-border">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs text-brand-cyan font-mono font-semibold">MYBUDDY LEARN</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-teal-100 text-teal-800 border border-teal-200">
+                        AI Platform
+                      </span>
+                    </div>
+                    <p className="text-sm font-medium text-neutral-900">Intelligent AI-Powered Learning Application</p>
+                    <p className="text-xs text-neutral-500 mt-1">Concept clarification, explanations, and adaptive assistance.</p>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-brand-surface border border-brand-border">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs text-amber-800 font-mono font-semibold">NUVEXA</span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
+                        Education ERP
+                      </span>
+                    </div>
+                    <p className="text-sm font-medium text-neutral-900">Enterprise Institution Management Platform</p>
+                    <p className="text-xs text-neutral-500 mt-1">Digital diary, attendance, exams, fees, and communication.</p>
+                  </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-brand-surface/70 border border-white/[0.06]">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs text-indigo-300 font-mono font-semibold">NUVEXA</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
-                      Education ERP
-                    </span>
-                  </div>
-                  <p className="text-sm font-medium text-white">Enterprise Institution Management Platform</p>
-                  <p className="text-xs text-slate-400 mt-1">Digital diary, attendance, exams, fees, and communication.</p>
+                <div className="mt-6 pt-5 border-t border-brand-border flex items-center justify-between text-xs text-neutral-600">
+                  <span className="flex items-center gap-1.5">
+                    <Layers className="w-3.5 h-3.5 text-brand-cyan" /> Multi-Product Ecosystem
+                  </span>
+                  <span className="flex items-center gap-1 text-emerald-700 font-mono font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5" /> Production-Ready
+                  </span>
                 </div>
               </div>
-
-              <div className="mt-6 pt-5 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-400">
-                <span className="flex items-center gap-1.5">
-                  <Layers className="w-3.5 h-3.5 text-brand-teal" /> Multi-Product Ecosystem
-                </span>
-                <span className="flex items-center gap-1 text-emerald-400 font-mono">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> Production-Ready
-                </span>
-              </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>

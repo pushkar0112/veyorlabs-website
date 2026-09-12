@@ -9,16 +9,16 @@ export default {
     extend: {
       colors: {
         brand: {
-          dark: '#07090E',
-          surface: '#0D111A',
-          card: '#121826',
-          'card-hover': '#182032',
-          border: 'rgba(255, 255, 255, 0.08)',
-          'border-highlight': 'rgba(56, 189, 248, 0.3)',
-          cyan: '#38BDF8',
-          teal: '#2DD4BF',
-          indigo: '#818CF8',
-          violet: '#A78BFA',
+          dark: '#F8F7F4',
+          surface: '#F1F0EC',
+          card: '#FFFFFF',
+          'card-hover': '#F8F7F4',
+          border: '#E3E1DC',
+          'border-highlight': '#245C4A',
+          cyan: '#245C4A',
+          teal: '#6E8B7C',
+          indigo: '#245C4A',
+          violet: '#8B7355',
         },
       },
       fontFamily: {

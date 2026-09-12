@@ -4,54 +4,142 @@
 
 @layer base {
   html {
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    color-scheme: dark;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  @keyframes draw-learning-path {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes reveal-learning-node {
+    from { opacity: 0; transform: scale(0.7); transform-origin: center; }
+    to { opacity: 1; transform: scale(1); transform-origin: center; }
   }
 
   body {
-    background-color: #07090E;
-    color: #E2E8F0;
+    background-color: #F8F7F4;
+    color: #171717;
     overflow-x: hidden;
+  }
+
+  section[id] {
+    scroll-margin-top: 96px;
   }
 
   /* Accessible high-contrast focus rings */
   :focus-visible {
-    outline: 2px solid #38BDF8;
+    outline: 2px solid #245C4A;
     outline-offset: 3px;
   }
 }
 
 @layer utilities {
-  /* Subtle glassmorphism */
-  .glass-panel {
-    background: rgba(13, 17, 26, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  .section-rule {
+    border-color: #E3E1DC;
   }
 
-  .glass-card {
-    background: rgba(18, 24, 38, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  .scroll-progress {
+    position: fixed;
+    inset: 0 auto auto 0;
+    z-index: 60;
+    height: 2px;
+    background: #245C4A;
+    pointer-events: none;
+    transition: width 120ms ease-out;
   }
 
-  .glass-card:hover {
-    background: rgba(24, 32, 50, 0.8);
-    border-color: rgba(56, 189, 248, 0.35);
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+      transform 700ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-enter {
+    opacity: 0;
+    animation: hero-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .nav-enter {
+    animation: hero-enter 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .footer-enter {
+    animation: hero-enter 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-enter-1 { animation-delay: 180ms; }
+  .hero-enter-2 { animation-delay: 320ms; }
+  .hero-enter-3 { animation-delay: 520ms; }
+  .hero-enter-4 { animation-delay: 680ms; }
+  .hero-visual-enter { animation-delay: 380ms; }
+
+  @keyframes hero-enter {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes hero-visual-drift {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  .hero-visual-drift {
+    animation: hero-visual-drift 8s ease-in-out infinite;
+  }
+
+  .hero-path {
+    stroke-dashoffset: 560;
+    animation: draw-learning-path 1.5s cubic-bezier(0.22, 1, 0.36, 1) 700ms forwards;
+  }
+
+  .hero-node {
+    opacity: 0;
+    animation: reveal-learning-node 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .hero-node-1 { animation-delay: 850ms; }
+  .hero-node-2 { animation-delay: 1000ms; }
+  .hero-node-3 { animation-delay: 1150ms; }
+  .hero-node-4 { animation-delay: 1300ms; }
+
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -7px;
+    left: 0;
+    height: 1px;
+    background: #245C4A;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 250ms ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .contact-email-panel {
+    transition: border-color 250ms ease, background-color 250ms ease, transform 250ms ease;
+  }
+
+  .contact-email-panel:hover {
+    border-color: rgba(36, 92, 74, 0.42);
+    background-color: #FFFFFF;
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.12);
-  }
-
-  /* Radiant ambient gradient backgrounds */
-  .glow-radial {
-    background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12) 0%, rgba(45, 212, 191, 0.05) 35%, transparent 70%);
-  }
-
-  .text-glow {
-    text-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
   }
 }
 
@@ -62,5 +150,22 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .reveal,
+  .hero-enter,
+  .nav-enter,
+  .footer-enter,
+  .hero-visual-drift {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+  .hero-path {
+    stroke-dashoffset: 0;
+    animation: none !important;
+  }
+  .hero-node {
+    opacity: 1;
+    animation: none !important;
   }
 }

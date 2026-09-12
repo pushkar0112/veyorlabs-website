@@ -10,6 +10,7 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { NotFound } from './components/NotFound';
 import { ProductDetailModal } from './components/ProductDetailModal';
+import { ScrollProgress } from './components/ScrollProgress';
 import { siteConfig, type ProductItem } from './config/site';
 
 export const App: React.FC = () => {
@@ -44,17 +45,18 @@ export const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-brand-dark text-slate-100 flex flex-col font-sans selection:bg-brand-cyan/20 selection:text-brand-cyan">
+    <div className="min-h-screen bg-brand-dark text-neutral-900 flex flex-col font-sans selection:bg-brand-cyan/20 selection:text-brand-cyan">
       {/* Skip to Main Content Link for Accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-cyan focus:text-slate-950 focus:rounded-lg focus:font-semibold"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-cyan focus:text-white focus:rounded-lg focus:font-semibold"
       >
         Skip to main content
       </a>
 
-      {/* Navigation Bar */}
+      {/* Navigation Bar & Scroll Progress */}
       <Navbar />
+      <ScrollProgress />
 
       {/* Main Content Area */}
       <main id="main-content" className="flex-grow">
